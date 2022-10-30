@@ -1,5 +1,6 @@
 package jpabook.jpashop.domain.item;
 
+import jpabook.jpashop.domain.Category;
 import jpabook.jpashop.domain.OrderItem;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,4 +26,7 @@ public abstract class Item {
 
     @OneToMany(mappedBy = "item")
     private List<OrderItem> orderItems = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "items")
+    private List<Category> categories = new ArrayList<>();
 }
