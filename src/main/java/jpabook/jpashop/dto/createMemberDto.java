@@ -8,5 +8,11 @@ import lombok.Setter;
 public class createMemberDto {
     private String name;
     private String contact;
-    private Address Address;
+    private Address address;
+
+    public createMemberDto(String name, String contact, Address address) {
+        this.name = name;
+        this.contact = contact;
+        this.address = address;
+    }
 }
