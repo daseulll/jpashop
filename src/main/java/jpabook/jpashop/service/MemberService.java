@@ -28,6 +28,11 @@ public class MemberService {
         }
     }
 
+    public Member find(String name) {
+        List<Member> members = memberRepository.findByName(name);
+        return members.get(0);
+    }
+
     public List<Member> listMembers() {
         return memberRepository.findAll();
     }
