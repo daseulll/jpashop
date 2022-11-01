@@ -27,4 +27,8 @@ public class MemberService {
             throw new IllegalArgumentException("중복된 회원 이름입니다.");
         }
     }
+
+    public List<Member> listMembers() {
+        return memberRepository.findAll();
+    }
 }

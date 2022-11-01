@@ -17,6 +17,12 @@ public class MemberController {
         return "signUpForm";
     }
 
+    @GetMapping()
+    String list() {
+        memberService.listMembers();
+        return "listMembers";
+    }
+
     @PostMapping
     String signup(createMemberDto memberDto) {
         memberService.join(memberDto);
