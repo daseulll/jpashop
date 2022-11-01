@@ -20,7 +20,7 @@ public class MemberServiceTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void validateDuplicateMember() {
-        memberService.saveMember(
+        memberService.join(
                 new createMemberDto(
                 "seul",
                 "010-0000-0000",
@@ -28,7 +28,7 @@ public class MemberServiceTest {
             )
         );
 
-        memberService.saveMember(
+        memberService.join(
                 new createMemberDto(
                         "seul",
                         "010-0000-0000",

@@ -18,8 +18,8 @@ public class MemberController {
     }
 
     @PostMapping
-    String createMember(createMemberDto memberDto) {
-        memberService.saveMember(memberDto);
+    String signup(createMemberDto memberDto) {
+        memberService.join(memberDto);
 
         return "home";
     }

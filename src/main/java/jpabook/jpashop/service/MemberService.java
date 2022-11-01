@@ -14,7 +14,7 @@ public class MemberService {
     @Autowired
     private MemberRepository memberRepository;
 
-    public void saveMember(createMemberDto memberDto) {
+    public void join(createMemberDto memberDto) {
         validateDuplicateMember(memberDto);
         Member member = new Member(memberDto.getName(), memberDto.getContact(), memberDto.getAddress());
         memberRepository.save(member);
