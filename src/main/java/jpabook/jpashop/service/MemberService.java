@@ -3,16 +3,18 @@ package jpabook.jpashop.service;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.dto.createMemberDto;
 import jpabook.jpashop.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
+@RequiredArgsConstructor
 public class MemberService {
-
-    @Autowired
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
     public void join(createMemberDto memberDto) {
         validateDuplicateMember(memberDto);
@@ -28,11 +30,13 @@ public class MemberService {
         }
     }
 
+    @Transactional(readOnly = true)
     public Member find(String name) {
         List<Member> members = memberRepository.findByName(name);
         return members.get(0);
     }
 
+    @Transactional(readOnly = true)
     public List<Member> listMembers() {
         return memberRepository.findAll();
     }
