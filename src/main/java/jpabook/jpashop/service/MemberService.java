@@ -23,17 +23,16 @@ public class MemberService {
     }
 
     private void validateDuplicateMember(createMemberDto memberDto) {
-        List<Member> members = memberRepository.findByName(memberDto.getName());
+        Member member = memberRepository.findByName(memberDto.getName());
 
-        if (members.size() >= 1) {
+        if (!(member == null)) {
             throw new IllegalArgumentException("중복된 회원 이름입니다.");
         }
     }
 
     @Transactional(readOnly = true)
     public Member find(String name) {
-        List<Member> members = memberRepository.findByName(name);
-        return members.get(0);
+        return memberRepository.findByName(name);
     }
 
     @Transactional(readOnly = true)
